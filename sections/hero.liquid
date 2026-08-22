@@ -1,0 +1,358 @@
+{{ 'section-hero.css' | asset_url | stylesheet_tag }}
+
+{%- liquid
+  assign has_video = false
+  if section.settings.background_video != blank
+    assign has_video = true
+  endif
+
+  assign show_mobile_image = false
+  if has_video and section.settings.disable_video_on_mobile and section.settings.background_image != blank
+    assign show_mobile_image = true
+  endif
+-%}
+
+{%- style -%}
+  #Hero-{{ section.id }} {
+    --hero-overlay-color: {{ section.settings.overlay_color.red }}, {{ section.settings.overlay_color.green }}, {{ section.settings.overlay_color.blue }};
+    --hero-overlay-opacity: {{ section.settings.overlay_opacity | divided_by: 100.0 }};
+  }
+
+  @media screen and (max-width: 749px) {
+    #Hero-{{ section.id }} {
+      min-height: {% if section.settings.full_height %}100svh{% else %}{{ section.settings.mobile_height }}vh{% endif %};
+    }
+  }
+
+  @media screen and (min-width: 750px) {
+    #Hero-{{ section.id }} {
+      min-height: {% if section.settings.full_height %}100svh{% else %}{{ section.settings.desktop_height }}vh{% endif %};
+    }
+  }
+{%- endstyle -%}
+
+<div
+  id="Hero-{{ section.id }}"
+  class="hero hero--content-{{ section.settings.content_position }} hero--align-{{ section.settings.text_align }} color-{{ section.settings.color_scheme }}"
+>
+  <div class="hero__media">
+    {%- if has_video -%}
+      <div class="hero__media-item hero__media-item--video{% if show_mobile_image %} hero__media-item--desktop-only{% endif %}">
+        {{
+          section.settings.background_video
+          | video_tag:
+            image_size: '1920x',
+            autoplay: true,
+            loop: true,
+            muted: true,
+            controls: false,
+            playsinline: true,
+            class: 'hero__video'
+        }}
+      </div>
+    {%- endif -%}
+
+    {%- if show_mobile_image -%}
+      <div class="hero__media-item hero__media-item--image hero__media-item--mobile-only">
+        {{
+          section.settings.background_image
+          | image_url: width: 1500
+          | image_tag:
+            widths: '375, 550, 750, 1100, 1500',
+            sizes: '100vw',
+            loading: 'eager',
+            fetchpriority: 'high'
+        }}
+      </div>
+    {%- elsif has_video == false and section.settings.background_image != blank -%}
+      <div class="hero__media-item hero__media-item--image">
+        {{
+          section.settings.background_image
+          | image_url: width: 3000
+          | image_tag:
+            widths: '375, 750, 1100, 1500, 2000, 3000',
+            sizes: '100vw',
+            loading: 'eager',
+            fetchpriority: 'high'
+        }}
+      </div>
+    {%- elsif has_video == false and section.settings.background_image == blank -%}
+      <div class="hero__media-item hero__media-item--placeholder">
+        {{ 'hero-apparel-1' | placeholder_svg_tag: 'placeholder-svg' }}
+      </div>
+    {%- endif -%}
+
+    <div class="hero__overlay"></div>
+  </div>
+
+  <div class="hero__content page-width">
+    {%- for block in section.blocks -%}
+      {%- case block.type -%}
+        {%- when 'logo' -%}
+          {%- if block.settings.logo != blank -%}
+            <div
+              class="hero__logo{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}"
+              style="--hero-logo-width: {{ block.settings.logo_width }}px;"
+              {{ block.shopify_attributes }}
+            >
+              {{
+                block.settings.logo
+                | image_url: width: 600
+                | image_tag: widths: '150, 200, 300, 450, 600', sizes: '(min-width: 750px) 300px, 45vw'
+              }}
+            </div>
+          {%- endif -%}
+        {%- when 'heading' -%}
+          {%- if block.settings.heading != blank -%}
+            <h1
+              class="hero__heading{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}"
+              {{ block.shopify_attributes }}
+            >
+              {{ block.settings.heading }}
+            </h1>
+          {%- endif -%}
+        {%- when 'subheading' -%}
+          {%- if block.settings.text != blank -%}
+            <p
+              class="hero__subheading{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}"
+              {{ block.shopify_attributes }}
+            >
+              {{ block.settings.text }}
+            </p>
+          {%- endif -%}
+        {%- when 'button' -%}
+          {%- if block.settings.button_label != blank -%}
+            <div
+              class="hero__button{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}"
+              {{ block.shopify_attributes }}
+            >
+              <a
+                href="{{ block.settings.button_link | default: '#' }}"
+                class="hero__cta hero__cta--{{ block.settings.style }}"
+              >
+                {{- block.settings.button_label | escape -}}
+              </a>
+            </div>
+          {%- endif -%}
+      {%- endcase -%}
+    {%- endfor -%}
+  </div>
+
+  {%- if section.settings.show_scroll_indicator -%}
+    <a href="#{{ section.settings.scroll_target | default: 'HeroEnd' }}" class="hero__scroll-indicator" aria-hidden="true"></a>
+  {%- endif -%}
+</div>
+
+{% schema %}
+{
+  "name": "Hero",
+  "tag": "section",
+  "class": "section section--hero",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "header",
+      "content": "Background"
+    },
+    {
+      "type": "image_picker",
+      "id": "background_image",
+      "label": "Background image",
+      "info": "Used as the mobile/fallback background, and as the full background if no video is set."
+    },
+    {
+      "type": "video",
+      "id": "background_video",
+      "label": "Background video",
+      "info": "Plays muted, looping, with no controls. Upload a short, silent clip for best results."
+    },
+    {
+      "type": "checkbox",
+      "id": "disable_video_on_mobile",
+      "label": "Use image instead of video on mobile",
+      "info": "Recommended for performance on mobile connections.",
+      "default": true
+    },
+    {
+      "type": "color",
+      "id": "overlay_color",
+      "label": "Overlay color",
+      "default": "#000000"
+    },
+    {
+      "type": "range",
+      "id": "overlay_opacity",
+      "min": 0,
+      "max": 80,
+      "step": 5,
+      "unit": "%",
+      "label": "Overlay opacity",
+      "info": "Darkens the background so text stays legible.",
+      "default": 25
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "checkbox",
+      "id": "full_height",
+      "label": "Full viewport height",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "desktop_height",
+      "min": 40,
+      "max": 100,
+      "step": 5,
+      "unit": "vh",
+      "label": "Desktop height",
+      "info": "Only applies when full viewport height is off.",
+      "default": 90
+    },
+    {
+      "type": "range",
+      "id": "mobile_height",
+      "min": 40,
+      "max": 100,
+      "step": 5,
+      "unit": "vh",
+      "label": "Mobile height",
+      "info": "Only applies when full viewport height is off.",
+      "default": 70
+    },
+    {
+      "type": "select",
+      "id": "content_position",
+      "label": "Content position",
+      "options": [
+        { "value": "top", "label": "Top" },
+        { "value": "center", "label": "Center" },
+        { "value": "bottom", "label": "Bottom" }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "select",
+      "id": "text_align",
+      "label": "Text alignment",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "scheme-4"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_scroll_indicator",
+      "label": "Show scroll indicator",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "scroll_target",
+      "label": "Scroll indicator target (element ID)",
+      "info": "Optional. The ID of the section below to scroll to, without the #. Defaults to the next section if left blank and the theme provides one."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "logo",
+      "name": "Logo",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "logo",
+          "label": "Logo image"
+        },
+        {
+          "type": "range",
+          "id": "logo_width",
+          "min": 80,
+          "max": 400,
+          "step": 10,
+          "unit": "px",
+          "label": "Logo width",
+          "default": 220
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "name": "Heading",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading",
+          "default": "Natch Diamonds"
+        }
+      ]
+    },
+    {
+      "type": "subheading",
+      "name": "Subheading",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Text",
+          "default": "Fine Diamond Jewellery & Sourcing"
+        }
+      ]
+    },
+    {
+      "type": "button",
+      "name": "Button",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "button_label",
+          "label": "Button label",
+          "default": "Discover the Collection"
+        },
+        {
+          "type": "url",
+          "id": "button_link",
+          "label": "Button link"
+        },
+        {
+          "type": "select",
+          "id": "style",
+          "label": "Button style",
+          "options": [
+            { "value": "text-link", "label": "Discreet text link" },
+            { "value": "solid", "label": "Solid button" },
+            { "value": "outline", "label": "Outlined button" }
+          ],
+          "default": "text-link"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Hero",
+      "blocks": [
+        { "type": "logo" },
+        { "type": "heading" },
+        { "type": "subheading" },
+        { "type": "button" }
+      ]
+    }
+  ]
+}
+{% endschema %}

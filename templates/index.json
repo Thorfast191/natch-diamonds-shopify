@@ -1,42 +1,43 @@
 {
   "sections": {
-    "image_banner": {
-      "type": "image-banner",
+    "hero": {
+      "type": "hero",
       "blocks": {
         "heading": {
           "type": "heading",
           "settings": {
-            "heading": "Browse our latest products",
-            "heading_size": "h0"
+            "heading": "Natch Diamonds"
+          }
+        },
+        "subheading": {
+          "type": "subheading",
+          "settings": {
+            "text": "Fine Diamond Jewellery & Sourcing"
           }
         },
         "button": {
-          "type": "buttons",
+          "type": "button",
           "settings": {
-            "button_label_1": "Shop all",
-            "button_link_1": "shopify://collections/all",
-            "button_style_secondary_1": true,
-            "button_label_2": "",
-            "button_link_2": "",
-            "button_style_secondary_2": false
+            "button_label": "Discover the Collection",
+            "button_link": "shopify://collections/all",
+            "style": "text-link"
           }
         }
       },
       "block_order": [
         "heading",
+        "subheading",
         "button"
       ],
       "settings": {
-        "image_overlay_opacity": 40,
-        "image_height": "large",
-        "desktop_content_position": "bottom-center",
-        "show_text_box": false,
-        "image_behavior": "none",
-        "desktop_content_alignment": "center",
-        "color_scheme": "scheme-3",
-        "mobile_content_alignment": "center",
-        "stack_images_on_mobile": false,
-        "show_text_below": false
+        "disable_video_on_mobile": true,
+        "overlay_color": "#000000",
+        "overlay_opacity": 25,
+        "full_height": true,
+        "content_position": "center",
+        "text_align": "center",
+        "color_scheme": "scheme-4",
+        "show_scroll_indicator": true
       }
     },
     "featured_collection": {
@@ -69,7 +70,7 @@
     }
   },
   "order": [
-    "image_banner",
+    "hero",
     "featured_collection"
   ]
 }
