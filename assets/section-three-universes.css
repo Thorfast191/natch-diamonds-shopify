@@ -1,0 +1,62 @@
+.three-universes__eyebrow {
+  font-size: 0.75rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  text-align: center;
+  margin: 0 0 3rem;
+}
+
+.three-universes__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem;
+}
+
+@media screen and (min-width: 750px) {
+  .three-universes__grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+}
+
+.three-universes__panel {
+  display: block;
+  text-decoration: none;
+  color: currentColor;
+}
+
+.three-universes__number {
+  display: block;
+  font-family: var(--font-heading-family);
+  font-size: 4rem;
+  line-height: 1;
+  opacity: 0.12;
+}
+
+.three-universes__title {
+  margin: 1rem 0 0.75rem;
+  font-family: var(--font-heading-family);
+}
+
+.three-universes__body {
+  opacity: 0.75;
+}
+
+.three-universes__body p {
+  margin: 0;
+}
+
+.three-universes__link-label {
+  display: inline-block;
+  margin-top: 1rem;
+  font-size: 0.75rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  border-bottom: 1px solid currentColor;
+  padding-bottom: 2px;
+  transition: opacity 0.2s ease;
+}
+
+.three-universes__panel:hover .three-universes__link-label {
+  opacity: 0.6;
+}
