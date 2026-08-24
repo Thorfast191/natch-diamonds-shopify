@@ -376,6 +376,14 @@
       "min_error": "This item has a minimum of {{ min }}",
       "max_error": "This item has a maximum of {{ max }}",
       "step_error": "You can only add this item in increments of {{ step }}"
+    },
+    "bespoke_form": {
+      "name_label": "Name",
+      "email_label": "Email",
+      "description_label": "Describe the piece you have in mind",
+      "submit_label": "Submit Inquiry",
+      "success_heading": "Thank you.",
+      "success_body": "We've received your bespoke inquiry and will be in touch shortly."
     }
   },
   "localization": {

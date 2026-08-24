@@ -1,0 +1,42 @@
+.bespoke-form .field {
+  margin-bottom: 1.5rem;
+}
+
+.bespoke-form .field__input {
+  width: 100%;
+  border: none;
+  border-bottom: 1px solid rgb(var(--color-foreground) / 0.2);
+  background: transparent;
+  padding: 0.75rem 0;
+  font: inherit;
+  color: currentColor;
+}
+
+.bespoke-form .field__input:focus {
+  outline: none;
+  border-bottom-color: currentColor;
+}
+
+.bespoke-form .field__label {
+  display: block;
+  font-size: 0.75rem;
+  opacity: 0.6;
+  margin-bottom: 0.25rem;
+}
+
+.bespoke-form__submit {
+  margin-top: 1rem;
+}
+
+.bespoke-form__success {
+  text-align: center;
+  font-family: var(--font-heading-family);
+}
+
+.bespoke-form__success-body {
+  display: block;
+  margin-top: 0.75rem;
+  font-family: var(--font-body-family);
+  font-size: 1rem;
+  opacity: 0.75;
+}

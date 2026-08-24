@@ -387,6 +387,14 @@
       "min_error": "Cet article a un minimum de {{ min }}",
       "max_error": "Cet article a un maximum de {{ max }}",
       "step_error": "Vous pouvez ajouter cet article uniquement par incréments de {{ step }}"
+    },
+    "bespoke_form": {
+      "name_label": "Nom",
+      "email_label": "E-mail",
+      "description_label": "Décrivez la pièce que vous avez en tête",
+      "submit_label": "Envoyer la demande",
+      "success_heading": "Merci.",
+      "success_body": "Nous avons bien reçu votre demande sur-mesure et vous répondrons sous peu."
     }
   },
   "localization": {

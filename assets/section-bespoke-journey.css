@@ -1,0 +1,36 @@
+.bespoke-journey__heading {
+  font-family: var(--font-heading-family);
+  text-align: center;
+}
+
+.bespoke-journey__intro {
+  text-align: center;
+  opacity: 0.75;
+  max-width: 40em;
+  margin: 1rem auto 0;
+}
+
+.bespoke-journey__steps {
+  list-style: none;
+  margin: 3rem 0 0;
+  padding: 0;
+  display: grid;
+  gap: 2.5rem;
+}
+
+.bespoke-journey__step-number {
+  display: block;
+  font-family: var(--font-heading-family);
+  font-size: 2.5rem;
+  line-height: 1;
+  opacity: 0.3;
+}
+
+.bespoke-journey__step-heading {
+  margin: 0.5rem 0 0.5rem;
+}
+
+.bespoke-journey__step-body {
+  opacity: 0.75;
+  margin: 0;
+}

@@ -1,0 +1,16 @@
+{
+  "sections": {
+    "bespoke-journey": {
+      "type": "bespoke-journey",
+      "settings": {}
+    },
+    "bespoke-form": {
+      "type": "bespoke-form",
+      "settings": {}
+    }
+  },
+  "order": [
+    "bespoke-journey",
+    "bespoke-form"
+  ]
+}
