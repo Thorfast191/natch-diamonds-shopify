@@ -48,10 +48,24 @@ Changes:
 ## Content language: bilingual EN/FR
 
 The live store is French (Swiss market: "Livraison en Suisse"). The ported
-Next.js copy is English. Decision: ship both, using Dawn's native locale
-system — `locales/en.default.json` gets the new keys, `locales/fr.json` is a
-new file with the same keys translated to French. All customer-facing copy in
-new sections uses `{{ 'namespace.key' | t }}`, never hardcoded strings.
+Next.js copy is English. Decision: ship both — but Shopify has two separate
+i18n mechanisms, and each new piece of content uses the one it actually
+needs:
+
+- **Merchant-editable section copy** (headings/body text entered via the
+  theme editor — Three Universes panels, Maison story, Bespoke journey
+  steps, Sourcing landing paths) uses schema settings of type
+  `text`/`richtext`/`inline_richtext`. Shopify's free "Translate & Adapt" app
+  auto-detects these fields and lets the merchant enter French versions once
+  French is published as a second store language — no `locales/*.json` entry
+  is needed or possible for this content.
+- **Fixed UI chrome the theme hardcodes** — form field labels, button text,
+  success/error messages on the two intake forms, mirroring how
+  `contact-form.liquid` already uses `{{ 'templates.contact.form.name' | t }}`
+  — uses `{{ 'namespace.key' | t }}` and needs matching entries in both
+  `locales/en.default.json` and a new `locales/fr.json`. This only applies to
+  the Bespoke and Sourcing intake forms; it is not a general "translate every
+  new section" mechanism.
 
 Admin-facing schema `name`/`label` fields (visible only in the theme editor,
 not the storefront) stay hardcoded English, matching the precedent already
