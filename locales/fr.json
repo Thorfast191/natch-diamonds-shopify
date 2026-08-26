@@ -395,6 +395,22 @@
       "submit_label": "Envoyer la demande",
       "success_heading": "Merci.",
       "success_body": "Nous avons bien reçu votre demande sur-mesure et vous répondrons sous peu."
+    },
+    "sourcing_form": {
+      "name_label": "Nom",
+      "email_label": "E-mail",
+      "buyer_type_label": "Type de client",
+      "buyer_type_private": "Client privé",
+      "buyer_type_trade": "Professionnel / Négoce",
+      "company_label": "Nom de l'entreprise",
+      "interest_label": "Type de diamant recherché",
+      "interest_natural": "Naturel",
+      "interest_lab_grown": "De laboratoire",
+      "interest_both": "Les deux",
+      "details_label": "Détails",
+      "submit_label": "Envoyer la demande",
+      "success_heading": "Merci.",
+      "success_body": "Notre équipe sourcing vous répondra sous peu."
     }
   },
   "localization": {

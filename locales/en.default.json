@@ -384,6 +384,22 @@
       "submit_label": "Submit Inquiry",
       "success_heading": "Thank you.",
       "success_body": "We've received your bespoke inquiry and will be in touch shortly."
+    },
+    "sourcing_form": {
+      "name_label": "Name",
+      "email_label": "Email",
+      "buyer_type_label": "Buyer type",
+      "buyer_type_private": "Private Client",
+      "buyer_type_trade": "Trade / Professional",
+      "company_label": "Company name",
+      "interest_label": "Diamond interest",
+      "interest_natural": "Natural",
+      "interest_lab_grown": "Lab-grown",
+      "interest_both": "Both",
+      "details_label": "Details",
+      "submit_label": "Submit Inquiry",
+      "success_heading": "Thank you.",
+      "success_body": "Our sourcing team will follow up shortly."
     }
   },
   "localization": {

@@ -1,0 +1,35 @@
+.sourcing-landing__heading {
+  font-family: var(--font-heading-family);
+  text-align: center;
+}
+
+.sourcing-landing__paths {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+@media screen and (min-width: 750px) {
+  .sourcing-landing__paths {
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+  }
+}
+
+.sourcing-landing__path {
+  border: 1px solid rgb(var(--color-foreground) / 0.15);
+  padding: 2rem;
+}
+
+.sourcing-landing__path-heading {
+  margin: 0 0 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 1rem;
+}
+
+.sourcing-landing__path-body {
+  opacity: 0.75;
+  margin: 0;
+}

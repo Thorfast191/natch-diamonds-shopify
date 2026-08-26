@@ -1,0 +1,67 @@
+.sourcing-form .field {
+  margin-bottom: 1.5rem;
+}
+
+.sourcing-form .field__input {
+  width: 100%;
+  border: none;
+  border-bottom: 1px solid rgb(var(--color-foreground) / 0.2);
+  background: transparent;
+  padding: 0.75rem 0;
+  font: inherit;
+  color: currentColor;
+}
+
+.sourcing-form .field__input:focus {
+  outline: none;
+  border-bottom-color: currentColor;
+}
+
+.sourcing-form .field__label {
+  display: block;
+  font-size: 0.75rem;
+  opacity: 0.6;
+  margin-bottom: 0.25rem;
+}
+
+.sourcing-form__buyer-type {
+  border: none;
+  padding: 0;
+  margin: 0 0 1.5rem;
+  display: flex;
+  gap: 1.5rem;
+}
+
+.sourcing-form__buyer-type legend {
+  width: 100%;
+  margin-bottom: 0.5rem;
+}
+
+/* Company name field only makes sense for trade buyers — pure CSS
+   sibling-selector toggle, no JS needed since the radios are native
+   form controls and this fieldset always precedes the company field
+   in DOM order. */
+.sourcing-form__company {
+  display: none;
+}
+
+.sourcing-form__buyer-type:has(#SourcingForm-trade:checked) ~ .sourcing-form__company {
+  display: block;
+}
+
+.sourcing-form__submit {
+  margin-top: 1rem;
+}
+
+.sourcing-form__success {
+  text-align: center;
+  font-family: var(--font-heading-family);
+}
+
+.sourcing-form__success-body {
+  display: block;
+  margin-top: 0.75rem;
+  font-family: var(--font-body-family);
+  font-size: 1rem;
+  opacity: 0.75;
+}

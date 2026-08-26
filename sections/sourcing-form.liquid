@@ -1,0 +1,114 @@
+{{ 'section-sourcing-form.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+<div class="color-{{ section.settings.color_scheme }} gradient">
+  <div class="sourcing-form-section page-width page-width--narrow section-{{ section.id }}-padding">
+    {%- form 'contact', id: 'SourcingForm', class: 'sourcing-form' -%}
+      {%- if form.posted_successfully? -%}
+        <h2 class="form-status sourcing-form__success" tabindex="-1" autofocus>
+          {{ 'sections.sourcing_form.success_heading' | t }}
+          <span class="sourcing-form__success-body">{{ 'sections.sourcing_form.success_body' | t }}</span>
+        </h2>
+      {%- else -%}
+        <fieldset class="sourcing-form__buyer-type">
+          <legend class="field__label">{{ 'sections.sourcing_form.buyer_type_label' | t }}</legend>
+          <input type="radio" id="SourcingForm-private" name="contact[{{ 'sections.sourcing_form.buyer_type_label' | t }}]" value="{{ 'sections.sourcing_form.buyer_type_private' | t }}" checked>
+          <label for="SourcingForm-private">{{ 'sections.sourcing_form.buyer_type_private' | t }}</label>
+          <input type="radio" id="SourcingForm-trade" name="contact[{{ 'sections.sourcing_form.buyer_type_label' | t }}]" value="{{ 'sections.sourcing_form.buyer_type_trade' | t }}">
+          <label for="SourcingForm-trade">{{ 'sections.sourcing_form.buyer_type_trade' | t }}</label>
+        </fieldset>
+
+        <div class="field">
+          <input type="text" id="SourcingForm-name" class="field__input" autocomplete="name" name="contact[{{ 'sections.sourcing_form.name_label' | t }}]" placeholder="{{ 'sections.sourcing_form.name_label' | t }}" required>
+          <label class="field__label" for="SourcingForm-name">{{ 'sections.sourcing_form.name_label' | t }}</label>
+        </div>
+
+        <div class="field">
+          <input type="email" id="SourcingForm-email" class="field__input" autocomplete="email" name="contact[email]" placeholder="{{ 'sections.sourcing_form.email_label' | t }}" required>
+          <label class="field__label" for="SourcingForm-email">{{ 'sections.sourcing_form.email_label' | t }}</label>
+        </div>
+
+        <div class="field sourcing-form__company">
+          <input type="text" id="SourcingForm-company" class="field__input" name="contact[{{ 'sections.sourcing_form.company_label' | t }}]" placeholder="{{ 'sections.sourcing_form.company_label' | t }}">
+          <label class="field__label" for="SourcingForm-company">{{ 'sections.sourcing_form.company_label' | t }}</label>
+        </div>
+
+        <div class="field">
+          <label class="field__label" for="SourcingForm-interest">{{ 'sections.sourcing_form.interest_label' | t }}</label>
+          <select id="SourcingForm-interest" class="field__input" name="contact[{{ 'sections.sourcing_form.interest_label' | t }}]">
+            <option value="{{ 'sections.sourcing_form.interest_natural' | t }}">{{ 'sections.sourcing_form.interest_natural' | t }}</option>
+            <option value="{{ 'sections.sourcing_form.interest_lab_grown' | t }}">{{ 'sections.sourcing_form.interest_lab_grown' | t }}</option>
+            <option value="{{ 'sections.sourcing_form.interest_both' | t }}">{{ 'sections.sourcing_form.interest_both' | t }}</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <textarea id="SourcingForm-details" class="text-area field__input" rows="6" name="contact[{{ 'sections.sourcing_form.details_label' | t }}]" placeholder="{{ 'sections.sourcing_form.details_label' | t }}" required></textarea>
+          <label class="field__label" for="SourcingForm-details">{{ 'sections.sourcing_form.details_label' | t }}</label>
+        </div>
+
+        <div class="sourcing-form__submit">
+          <button type="submit" class="button">{{ 'sections.sourcing_form.submit_label' | t }}</button>
+        </div>
+      {%- endif -%}
+    {%- endform -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Sourcing Form",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "scheme-2"
+    },
+    {
+      "type": "header",
+      "content": "Section padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding top",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding bottom",
+      "default": 72
+    }
+  ],
+  "presets": [
+    {
+      "name": "Sourcing Form"
+    }
+  ]
+}
+{% endschema %}

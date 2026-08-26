@@ -1,0 +1,16 @@
+{
+  "sections": {
+    "sourcing-landing": {
+      "type": "sourcing-landing",
+      "settings": {}
+    },
+    "sourcing-form": {
+      "type": "sourcing-form",
+      "settings": {}
+    }
+  },
+  "order": [
+    "sourcing-landing",
+    "sourcing-form"
+  ]
+}
