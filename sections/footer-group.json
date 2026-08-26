@@ -4,8 +4,25 @@
   "sections": {
     "footer": {
       "type": "footer",
-      "blocks": {},
-      "block_order": [],
+      "blocks": {
+        "client_care": {
+          "type": "link_list",
+          "settings": {
+            "heading": "Client Care",
+            "menu": "footer"
+          }
+        },
+        "brand": {
+          "type": "brand_information",
+          "settings": {
+            "show_social": true
+          }
+        }
+      },
+      "block_order": [
+        "client_care",
+        "brand"
+      ],
       "settings": {
         "color_scheme": "scheme-1",
         "newsletter_enable": true,
