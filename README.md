@@ -26,15 +26,17 @@ Run this before committing. It catches broken Liquid/schema references, missing 
 - [x] Shopify CLI installed
 - [x] Blog/article templates removed (not needed for this brand)
 - [x] Section 1 — Hero (`sections/hero.liquid`, `assets/section-hero.css`)
-- [ ] Three Universes intro (Collection / Bespoke / Sourcing)
-- [ ] Featured Collection showcase (editorial, not a grid)
-- [ ] Bespoke journey (5-step process)
-- [ ] Diamond Sourcing landing (Private / Professional paths)
-- [ ] Maison/About section
-- [ ] Footer (client care, shipping/returns, privacy, terms, language selector)
-- [ ] Bespoke + Sourcing intake form templates
+- [x] Three Universes intro (Collection / Bespoke / Sourcing)
+- [x] Featured Collection showcase (editorial, not a grid)
+- [x] Bespoke journey (5-step process)
+- [x] Diamond Sourcing landing (Private / Professional paths)
+- [x] Maison/About section
+- [x] Footer (client care, shipping/returns, privacy, terms, language selector)
+- [x] Bespoke + Sourcing intake form templates
 - [ ] Further Dawn strip-down (B2B quick-order, local pickup — currently left in place, dormant/opt-in, low risk)
-- [ ] Design token pass (color schemes, type scale) tuned to the brand palette
+- [x] Design token pass (color schemes, type scale) tuned to the brand palette
+
+Maison and Bespoke Journey sections ship with `[CLIENT COPY NEEDED]` placeholder text — no source material for brand history or the specific 5-step process exists yet. Replace before launch. French translations for the two intake forms are in `locales/fr.json`; publishing French as a second store language (required for the footer's language selector to appear) happens in Shopify Admin, not in theme code.
 
 ## Structure notes
 
