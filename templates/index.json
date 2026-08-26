@@ -70,6 +70,36 @@
     },
     "three_universes": {
       "type": "three-universes",
+      "blocks": {
+        "collection": {
+          "type": "universe",
+          "settings": {
+            "heading": "The Collection",
+            "body": "<p>Ready-to-order pieces from The Studs, The Hoops, and The Tennis — designed once, cut precisely, available now.</p>",
+            "link": "shopify://collections/all",
+            "link_label": "Explore the Collection"
+          }
+        },
+        "bespoke": {
+          "type": "universe",
+          "settings": {
+            "heading": "Bespoke",
+            "body": "<p>A piece built around one idea: yours. Guided from the first sketch to the final polish.</p>",
+            "link": "shopify://pages/bespoke",
+            "link_label": "Begin a Bespoke Piece"
+          }
+        },
+        "sourcing": {
+          "type": "universe",
+          "settings": {
+            "heading": "Sourcing",
+            "body": "<p>Natural or lab-grown, private client or trade buyer — stones sourced and verified to the specification you set.</p>",
+            "link": "shopify://pages/diamond-sourcing",
+            "link_label": "Start Sourcing"
+          }
+        }
+      },
+      "block_order": ["collection", "bespoke", "sourcing"],
       "settings": {}
     },
     "maison": {

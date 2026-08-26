@@ -2,6 +2,23 @@
   "sections": {
     "sourcing-landing": {
       "type": "sourcing-landing",
+      "blocks": {
+        "private": {
+          "type": "path",
+          "settings": {
+            "heading": "Private Client",
+            "body": "Natural or lab-grown, sourced and certified to the specification you set — for a single piece or a collection."
+          }
+        },
+        "trade": {
+          "type": "path",
+          "settings": {
+            "heading": "Trade & Professional",
+            "body": "Wholesale sourcing for jewellers and retailers, natural and lab-grown, with certification on every stone."
+          }
+        }
+      },
+      "block_order": ["private", "trade"],
       "settings": {}
     },
     "sourcing-form": {
