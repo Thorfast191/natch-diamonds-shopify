@@ -24,7 +24,7 @@
         {%- assign padded_index = forloop.index | prepend: '0' -%}
         <a
           href="{{ block.settings.link | default: '#' }}"
-          class="three-universes__panel{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}"
+          class="three-universes__panel{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
           style="--animation-order: {{ forloop.index0 }};"
           {{ block.shopify_attributes }}
         >
