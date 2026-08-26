@@ -67,10 +67,20 @@
         "padding_top": 44,
         "padding_bottom": 36
       }
+    },
+    "three_universes": {
+      "type": "three-universes",
+      "settings": {}
+    },
+    "maison": {
+      "type": "maison",
+      "settings": {}
     }
   },
   "order": [
     "hero",
-    "featured_collection"
+    "featured_collection",
+    "three_universes",
+    "maison"
   ]
 }
