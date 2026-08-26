@@ -34,9 +34,9 @@ Run this before committing. It catches broken Liquid/schema references, missing 
 - [x] Footer (client care, shipping/returns, privacy, terms, language selector)
 - [x] Bespoke + Sourcing intake form templates
 - [ ] Further Dawn strip-down (B2B quick-order, local pickup — currently left in place, dormant/opt-in, low risk)
-- [x] Design token pass (color schemes, type scale) tuned to the brand palette
+- [x] Design token pass (color schemes, typography) tuned to the brand palette
 
-Maison and Bespoke Journey sections ship with `[CLIENT COPY NEEDED]` placeholder text — no source material for brand history or the specific 5-step process exists yet. Replace before launch. French translations for the two intake forms are in `locales/fr.json`; publishing French as a second store language (required for the footer's language selector to appear) happens in Shopify Admin, not in theme code.
+Maison and Bespoke Journey sections ship with `[CLIENT COPY NEEDED]` placeholder text — no source material for brand history or the specific 5-step process exists yet. Replace before launch. French translations for the two intake forms are in `locales/fr.json`; publishing French as a second store language (required for the footer's language selector to appear) happens in Shopify Admin, not in theme code. The footer's Client Care links only appear once the store's "Footer" navigation menu is populated in Shopify Admin, and Shipping/Privacy/Terms policy links only appear once Settings → Policies are filled in. The `page.bespoke` and `page.diamond-sourcing` templates only render once matching page records are created in Shopify Admin → Online Store → Pages (same as the existing `page.contact` pattern already in this theme).
 
 ## Structure notes
 

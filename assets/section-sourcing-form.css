@@ -49,6 +49,14 @@
   display: block;
 }
 
+/* :has() is unsupported in some older browsers; fail open so the
+   company field is never permanently unreachable for trade buyers. */
+@supports not selector(:has(*)) {
+  .sourcing-form__company {
+    display: block;
+  }
+}
+
 .sourcing-form__submit {
   margin-top: 1rem;
 }
